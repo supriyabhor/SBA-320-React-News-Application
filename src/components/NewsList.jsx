@@ -2,7 +2,7 @@ import React from 'react';
 
 const NewsList = ({ news, onArticleSelect }) => {
   return (
-    <div>
+    <div className='news-list'>
       <h1>News List</h1>
       <ul>
         {news.map((article, index) => (
