@@ -1,4 +1,5 @@
 #root {
+  background-color: rgb(231, 231, 244);
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -6,6 +7,7 @@
 }
 
 .btn-container {
+ 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -14,10 +16,23 @@
 }
 
 .news-list li{
+  background-color: rgb(254, 249, 249) ;
     border: solid black;
     margin-top: 10px;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    display: block;
 }
+
+.news-list button {
+  padding: 10px ;
+  font-size: 14px;
+  background-color: #007bff;
+  color:white;
+  border: none;
+  cursor: pointer;
+ 
+}
+
