@@ -7,9 +7,12 @@ const NewsList = ({ news, onArticleSelect }) => {
       <ul>
         {news.map((article, index) => (
           <li key={`${article.title}_${index}`}>
-            <h2>{article.title}</h2>
+            <img src={article.image_url} alt={article.title} />
+            <p><b>{article.pubDate}</b></p>
+            {/* <h2>{article.title}</h2> */}
             <p>{article.description}</p>
-            <p>Source: {article.source}</p>
+            <p>Source: {article.source_name}</p>
+           <a href={article.link}></a>
             <button onClick={() => onArticleSelect(article)}>Select</button>
           </li>
         ))}
