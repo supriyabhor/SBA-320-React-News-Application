@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import NewsList from './components/NewsList';
 import NewsArticle from './components/NewsArticles';
 import SearchForm from './components/SearchForm';
@@ -10,7 +10,35 @@ function App() {
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [searchTerm, setSearchTerm] = useState('pizza');
   const [region, setRegion] = useState('');
+  const [countries, setCountries]= useState('');
   const API_KEY = 'pub_70208a656065d4f9974711e72e2faca08bb12';
+
+  const countriesName = [
+    { code: 'au', name: 'Australia' },
+    { code: 'in', name: 'India' },
+    { code: 'fr', name: 'France' },
+    { code: 'de', name: 'Germany' },
+    { code: 'jp', name: 'Japan' },
+    { code: 'mx', name: 'Mexico' },
+    { code: 'us', name: 'USA' },
+    { code: 'ca', name: 'Canada' },
+    { code: 'gb', name: 'UK' },
+    { code: 'br', name: 'Brazil' },
+    { code: 'za', name: 'South Africa' },
+    { code: 'kr', name: 'South Korea' },
+  ];
+
+
+  useEffect(() => {
+    const fetchCountries = async () => {
+      const API_URL = `https://newsdata.io/api/1/countries?apikey=${API_KEY}`;
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      console.log('Countries Data:', data);
+      setCountries(data.results);
+    };
+    fetchCountries();
+  }, []);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -42,26 +70,18 @@ function App() {
 
   return (
   
-      <div>
-        <h1>News Data</h1>
-        <div className='btn-container'>
-     
-     <button onClick={() => handleRegionChange('au')}>Australia</button>
-     <button onClick={() => handleRegionChange('in')}>India</button>
-     <button onClick={() => handleRegionChange('fr')}>France</button>
-       <button onClick={() => handleRegionChange('de')}>Germany</button>
-       <button onClick={() => handleRegionChange('jp')}>Japan</button>
-       <button onClick={() => handleRegionChange('mx')}>Mexico</button>
-       <button onClick={() => handleRegionChange('us')}>USA</button>
-     <button onClick={() => handleRegionChange('ca')}>Canada</button>
-     <button onClick={() => handleRegionChange('gb')}>UK</button>
-       <button onClick={() => handleRegionChange('br')}>Brazil</button>
-       <button onClick={() => handleRegionChange('za')}>South Africa</button>
-         <button onClick={() => handleRegionChange('kr')}>South Korea</button>
-   </div>
+    <div>
+    <h1>News Data</h1>
+    <div className="btn-container">
+      {countriesName.map((country) => (
+        <button key={country.code} onClick={() => handleRegionChange(country.code)}>
+          {country.name}
+        </button>
+      ))}
+    </div>
 
         <SearchForm onSearchSubmit={handleSearchSubmit} />
-        
+
         <Routes>
           <Route
             path="/"
