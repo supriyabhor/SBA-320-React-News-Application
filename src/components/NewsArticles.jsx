@@ -5,7 +5,7 @@ const NewsArticle = ({ article }) => {
     <div>
       <h1>{article.title}</h1>
       <p>{article.description}</p>
-      <p>Source: {article.source}</p>
+      <p>Source: {article.source_name}</p>
       <p>{article.content}</p>
     </div>
   );

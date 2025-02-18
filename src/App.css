@@ -36,3 +36,31 @@
  
 }
 
+.news-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.news-articles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.news-article {
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  width: calc(33.33% - 40px);
+}
+
+.news-article img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}

@@ -1,22 +1,22 @@
+
 import React from 'react';
 
 const NewsList = ({ news, onArticleSelect }) => {
   return (
-    <div className='news-list'>
+    <div className="news-list">
       <h1>News List</h1>
-      <ul>
+      <div className="news-articles">
         {news.map((article, index) => (
-          <li key={`${article.title}_${index}`}>
+          <div key={`${article.title}_${index}`} className="news-article">
             <img src={article.image_url} alt={article.title} />
-            <p><b>{article.pubDate}</b></p>
-            {/* <h2>{article.title}</h2> */}
             <p>{article.description}</p>
+            <p><b>{article.pubDate}</b></p>
             <p>Source: {article.source_name}</p>
-           <a href={article.link}></a>
+            <p>Source URL: <a href={article.source_url} target="_blank" rel="noopener noreferrer">{article.source_name}</a></p>
             <button onClick={() => onArticleSelect(article)}>Select</button>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
