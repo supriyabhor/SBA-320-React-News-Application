@@ -5,8 +5,8 @@ const NewsList = ({ news, onArticleSelect }) => {
     <div>
       <h1>News List</h1>
       <ul>
-        {news.map((article) => (
-          <li key={article.title}>
+        {news.map((article, index) => (
+          <li key={`${article.title}_${index}`}>
             <h2>{article.title}</h2>
             <p>{article.description}</p>
             <p>Source: {article.source}</p>
